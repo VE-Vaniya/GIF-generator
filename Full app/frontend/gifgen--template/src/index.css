@@ -53,8 +53,8 @@ h1 {
   font-size: 50px;
   display: flex;
   flex-direction: column;
-  gap: 100px; /* Fixed and reduced from 30px */
-  margin-bottom: 20px; /* Reduced from 40px */
+  gap: 40px; /* Reduced from 100px to fit third input */
+  margin-bottom: 20px;
 }
 
 .file-input-group {
