@@ -7,8 +7,13 @@ from PIL import Image
 
 app = Flask(__name__)
 CORS(app)
-app.config['UPLOAD_FOLDER'] = 'temp'
+
+# Use absolute path for production
+app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'temp')
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB limit
+
+# Create upload folder if it doesn't exist
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp'}
 
@@ -28,7 +33,7 @@ def validate_images(image_paths):
     
     return True, ""
 
-def create_gif(image_paths, output_path, duration=500):
+def create_gif(image_paths, output_path, duration=500):  # Keep 500ms as in first version
     """Create GIF from images with consistent dimensions"""
     images = []
     first_img = iio.imread(image_paths[0])
@@ -90,6 +95,7 @@ def generate_gif():
             except:
                 pass
 
+# Use this for production (PythonAnywhere)
 if __name__ == '__main__':
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
