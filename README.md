@@ -68,3 +68,16 @@ source venv/bin/activate
 
 # Install dependencies
 pip install -r requirements.txt
+```
+## 🚀 How To Use
+- Add 2 images of equal dimension (third one is optional)
+- Click on "Generate GIF"
+- Once generated, your GIF will appear on the page.
+- Click **"Download GIF"** to save it to your device
+
+### 💡 Pro Tips:
+- Use images with similar dimensions for best results
+- The GIF will use the order you uploaded the images
+- Maximum file size: 16MB per image
+
+
