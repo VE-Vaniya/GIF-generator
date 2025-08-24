@@ -83,7 +83,7 @@ function App() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/generate-gif', {
+      const response = await fetch('vaniyaejaz.pythonanywhere.com/generate-gif', {  
         method: 'POST',
         body: formData,
         mode: 'cors',
